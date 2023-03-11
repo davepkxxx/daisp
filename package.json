@@ -1,0 +1,39 @@
+{
+  "name": "daisp",
+  "version": "0.0.1",
+  "description": "A lisp scheme dialect",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/davepkxxx/daisp.git"
+  },
+  "keywords": [
+    "lisp",
+    "daisp"
+  ],
+  "author": "David Dai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davepkxxx/daisp/issues"
+  },
+  "homepage": "https://github.com/davepkxxx/daisp#readme",
+  "workspaces": [
+    "packages/daisp-loader",
+    "packages/daisp-parser",
+    "packages/daisp-transform",
+    "packages/daisp-tree",
+    "packages/rollup-plugin-daisp",
+    "packages/daisp-types"
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.54.0",
+    "@typescript-eslint/parser": "^5.54.0",
+    "eslint": "^8.35.0",
+    "prettier": "^2.8.4",
+    "rollup": "^3.18.0",
+    "typescript": "^4.9.5"
+  }
+}

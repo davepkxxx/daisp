@@ -1,0 +1,40 @@
+{
+  "name": "daisp-loader",
+  "version": "0.0.1",
+  "description": "A Daisp loader for webpack",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
+    "coverage": "set NODE_OPTIONS=--experimental-vm-modules && jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davepkxxx/daisp.git",
+    "directory": "packages/daisp-loader"
+  },
+  "keywords": [
+    "lisp",
+    "daisp",
+    "webpack"
+  ],
+  "author": "David Dai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davepkxxx/daisp/issues"
+  },
+  "homepage": "https://github.com/davepkxxx/daisp#readme",
+  "dependencies": {
+    "@babel/generator": "^7.21.1",
+    "@daisp/parser": "^0.0.1",
+    "@daisp/transform": "^0.0.1"
+  },
+  "devDependencies": {
+    "memfs": "^3.4.13",
+    "typescript": "^4.9.5",
+    "webpack": "^5.76.0"
+  }
+}

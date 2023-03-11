@@ -1,0 +1,25 @@
+{
+  "name": "@types/daisp-tree",
+  "version": "0.0.1",
+  "description": "Daisp AST",
+  "types": "index.d.ts",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davepkxxx/daisp.git",
+    "directory": "packages/daisp-tree"
+  },
+  "keywords": [
+    "lisp",
+    "daisp",
+    "AST"
+  ],
+  "author": "David Dai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davepkxxx/daisp/issues"
+  },
+  "homepage": "https://github.com/davepkxxx/daisp#readme"
+}

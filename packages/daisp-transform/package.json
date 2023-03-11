@@ -1,0 +1,44 @@
+{
+  "name": "@daisp/transform",
+  "version": "0.0.1",
+  "description": "transform Daisp AST to ECMAScript AST",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "jest",
+    "coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davepkxxx/daisp.git",
+    "directory": "packages/daisp-transform"
+  },
+  "keywords": [
+    "lisp",
+    "daisp",
+    "transform"
+  ],
+  "author": "David Dai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davepkxxx/daisp/issues"
+  },
+  "homepage": "https://github.com/davepkxxx/daisp#readme",
+  "dependencies": {
+    "@babel/types": "^7.21.2"
+  },
+  "devDependencies": {
+    "@daisp/types": "^0.0.1",
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/find-package-json": "^1.2.3",
+    "jest": "^29.5.0",
+    "rollup": "^3.18.0",
+    "rollup-plugin-dts": "^5.2.0",
+    "ts-jest": "^29.0.5"
+  }
+}
