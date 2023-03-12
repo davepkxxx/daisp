@@ -1,7 +1,7 @@
 {
-  "name": "daisp-loader",
+  "name": "gulp-daisp",
   "version": "0.0.1",
-  "description": "A Daisp loader for webpack",
+  "description": "",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -13,13 +13,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davepkxxx/daisp.git",
-    "directory": "packages/daisp-loader"
+    "url": "git+https://github.com/davepkxxx/daisp.git"
   },
   "keywords": [
     "lisp",
     "daisp",
-    "webpack"
+    "gulp",
+    "plugin"
   ],
   "author": "David Dai",
   "license": "MIT",
@@ -30,10 +30,14 @@
   "dependencies": {
     "@babel/generator": "^7.21.1",
     "@daisp/parser": "^0.0.1",
-    "@daisp/transform": "^0.0.1"
+    "@daisp/transform": "^0.0.1",
+    "plugin-error": "^2.0.1"
   },
   "devDependencies": {
-    "typescript": "^4.9.5",
-    "webpack": "^5.76.0"
+    "@types/gulp": "^4.0.10",
+    "@types/gulp-rename": "^2.0.1",
+    "gulp": "^4.0.2",
+    "gulp-rename": "^2.0.0",
+    "typescript": "^4.9.5"
   }
 }

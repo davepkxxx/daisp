@@ -1,5 +1,4 @@
-import { mkdirSync, statSync, writeFileSync } from "fs";
-import { createFsFromVolume, IFs, Volume } from "memfs";
+import { mkdirSync, readFileSync, statSync, writeFileSync } from "fs";
 import { resolve as pathResolve } from "path";
 import webpack from "webpack";
 
@@ -7,10 +6,8 @@ describe("index", () => {
   describe("loader", () => {
     const rootDir = pathResolve(__dirname, "..");
     const targetDir = pathResolve(rootDir, "target");
-    let fs: IFs;
 
     beforeEach(() => {
-      fs = createFsFromVolume(new Volume());
       try {
         statSync(targetDir);
       } catch (err) {
@@ -25,11 +22,11 @@ describe("index", () => {
       const compiler = webpack({
         mode: "production",
         entry: {
-          main: source,
+          fnDecl: source,
         },
         output: {
-          path: "/",
-          filename: "main.js",
+          path: targetDir,
+          filename: "[name].js",
           library: "PI",
         },
         module: {
@@ -47,7 +44,6 @@ describe("index", () => {
           splitChunks: false,
         },
       });
-      compiler.outputFileSystem = fs;
 
       await new Promise<void>((resolve, reject) => {
         compiler.run((err, stats) => {
@@ -66,7 +62,7 @@ describe("index", () => {
         });
       });
 
-      const target = fs.readFileSync("/main.js", "utf8").toString();
+      const target = readFileSync(pathResolve(targetDir, "fnDecl.js"), "utf8");
       expect(/function PI\(\) \{\s+return 3.14;\s+\}/.test(target)).toBe(true);
       expect(/PI = __webpack_exports__;/.test(target)).toBe(true);
     });

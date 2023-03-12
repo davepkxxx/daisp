@@ -21,7 +21,11 @@ export function config(pkg, ops) {
   /**
    * @type {import("rollup").RollupOptions}
    */
-  const commonOps = { ...defaultOps, ...ops };
+  const commonOps = {
+    ...defaultOps,
+    external: Object.getOwnPropertyNames(pkg.dependencies || {}),
+    ...ops,
+  };
   return defineConfig([
     {
       ...commonOps,
