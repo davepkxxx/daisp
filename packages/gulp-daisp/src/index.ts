@@ -1,11 +1,9 @@
-import generate from "@babel/generator";
-import { parse } from "@daisp/parser";
-import { transform } from "@daisp/transform";
+import { compile } from "@daisp/compile";
 import PluginError from "plugin-error";
 import { Transform } from "stream";
 import type Vinyl from "vinyl";
 
-function daisp(): NodeJS.ReadWriteStream {
+export default function (): NodeJS.ReadWriteStream {
   return new Transform({
     objectMode: true,
     transform: (chunk: Vinyl, encoding, callback) => {
@@ -15,14 +13,10 @@ function daisp(): NodeJS.ReadWriteStream {
         callback(new PluginError("gulp-daisp", "Streaming not supported"));
       } else {
         if (chunk.contents) {
-          chunk.contents = Buffer.from(
-            generate(transform(parse(chunk.contents.toString()))).code
-          );
+          chunk.contents = Buffer.from(compile(chunk.contents.toString()).code);
         }
         callback(null, chunk);
       }
     },
   });
 }
-
-export default daisp;

@@ -1,6 +1,4 @@
-import { config } from "../../rollup.config.js";
-import pkg from "./package.json" assert { type: "json" };
+const { config } = require("../../rollup.config");
+const pkg = require("./package.json");
 
-export default config(pkg, {
-  external: ["@babel/types"],
-});
+module.exports = config(pkg);

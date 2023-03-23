@@ -1,15 +1,15 @@
 {
-  "name": "rollup-plugin-daisp",
+  "name": "grunt-daisp",
   "version": "0.0.1",
-  "description": "A rollup plugin for daisp",
+  "description": "",
+  "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "babel": "babel src --out-dir dist",
     "build": "rollup -c",
-    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
-    "coverage": "set NODE_OPTIONS=--experimental-vm-modules && jest --coverage"
+    "test": "jest",
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,8 @@
   "keywords": [
     "lisp",
     "daisp",
-    "rollup",
-    "plugin",
-    "transform"
+    "grunt",
+    "plugin"
   ],
   "author": "David Dai",
   "license": "MIT",
@@ -29,8 +28,8 @@
   },
   "homepage": "https://github.com/davepkxxx/daisp#readme",
   "devDependencies": {
-    "rollup": "^3.18.0",
-    "typescript": "^4.9.5"
+    "@types/grunt": "^0.4.27",
+    "grunt": "^1.6.1"
   },
   "dependencies": {
     "@daisp/compile": "^0.0.1"

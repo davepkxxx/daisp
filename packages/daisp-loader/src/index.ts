@@ -1,10 +1,8 @@
-import generate from "@babel/generator";
-import { parse } from "@daisp/parser";
-import { transform } from "@daisp/transform";
+import { compile } from "@daisp/compile";
 import { type LoaderDefinitionFunction } from "webpack";
 
 const loader: LoaderDefinitionFunction = function (content: string) {
-  return generate(transform(parse(content))).code;
+  return compile(content).code;
 };
 
 export default loader;

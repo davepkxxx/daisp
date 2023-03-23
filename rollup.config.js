@@ -1,51 +1,57 @@
-import commonjs from "@rollup/plugin-commonjs";
-import nodeResolve from "@rollup/plugin-node-resolve";
-import ts from "@rollup/plugin-typescript";
-import { defineConfig } from "rollup";
-import dts from "rollup-plugin-dts";
-
-/**
- * @type {import("rollup").RollupOptions}
- */
-const defaultOps = {
-  input: "src/index.ts",
-  plugins: [commonjs(), nodeResolve(), ts()],
-};
+const babel = require("@rollup/plugin-babel");
+const commonjs = require("@rollup/plugin-commonjs");
+const nodeResolve = require("@rollup/plugin-node-resolve");
+const ts = require("@rollup/plugin-typescript");
+const path = require("path");
+const { defineConfig } = require("rollup");
+const { default: dts } = require("rollup-plugin-dts");
 
 /**
  * @param {import("find-package-json").PackageJSON} pkg
- * @param {import("rollup").RollupOptions} ops
+ * @param {import("rollup").RollupOptions[]} options
  * @returns {import("rollup").RollupOptions}
  */
-export function config(pkg, ops) {
-  /**
-   * @type {import("rollup").RollupOptions}
-   */
-  const commonOps = {
-    ...defaultOps,
+function getConfig(pkg, ...options) {
+  return options.reduce((ops, option) => ({ ...ops, ...option }), {
+    input: "src/index.ts",
+    plugins: [nodeResolve(), commonjs(), ts()],
     external: Object.getOwnPropertyNames(pkg.dependencies || {}),
-    ...ops,
-  };
-  return defineConfig([
-    {
-      ...commonOps,
-      output: [
-        {
-          file: pkg.main,
-          format: "cjs",
-        },
-        {
-          file: pkg.module,
-          format: "es",
-        },
-      ],
-    },
-    {
-      ...commonOps,
-      plugins: [dts()],
-      output: {
-        file: pkg.types,
-      },
-    },
-  ]);
+  });
 }
+
+/**
+ * @param {import("find-package-json").PackageJSON} pkg
+ * @param {import("rollup").RollupOptions[]} ops
+ * @returns {import("rollup").RollupOptions}
+ */
+module.exports.config = function (pkg, ...ops) {
+  return defineConfig([
+    getConfig(
+      pkg,
+      {
+        output: [
+          {
+            file: pkg.main,
+            format: "cjs",
+            interop: "auto",
+          },
+          {
+            file: pkg.module,
+            format: "es",
+          },
+        ],
+      },
+      ...ops
+    ),
+    getConfig(
+      pkg,
+      {
+        plugins: [dts()],
+        output: {
+          file: pkg.types,
+        },
+      },
+      ...ops
+    ),
+  ]);
+};

@@ -3,9 +3,6 @@
   "version": "0.0.1",
   "description": "Daisp AST",
   "types": "index.d.ts",
-  "devDependencies": {
-    "typescript": "^4.9.5"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/davepkxxx/daisp.git",
@@ -21,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/davepkxxx/daisp/issues"
   },
-  "homepage": "https://github.com/davepkxxx/daisp#readme"
+  "homepage": "https://github.com/davepkxxx/daisp#readme",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
 }

@@ -1,7 +1,7 @@
 {
-  "name": "@daisp/parser",
+  "name": "@daisp/compile",
   "version": "0.0.1",
-  "description": "A Daisp parser",
+  "description": "Compile Daisp",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -12,18 +12,18 @@
   },
   "scripts": {
     "build": "rollup -c",
-    "test": "set NODE_OPTIONS=--experimental-vm-modules && jest",
-    "coverage": "set NODE_OPTIONS=--experimental-vm-modules && jest --coverage"
+    "test": "jest",
+    "tsc": "tsc ./src/index.ts --output ./dist/index.js",
+    "coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/davepkxxx/daisp.git",
-    "directory": "packages/daisp-parser"
+    "url": "git+https://github.com/davepkxxx/daisp.git"
   },
   "keywords": [
     "lisp",
     "daisp",
-    "parser"
+    "compile"
   ],
   "author": "David Dai",
   "license": "MIT",
@@ -32,6 +32,8 @@
   },
   "homepage": "https://github.com/davepkxxx/daisp#readme",
   "dependencies": {
-    "@daisp/types": "^0.0.1"
+    "@babel/generator": "^7.21.1",
+    "@daisp/parser": "^0.0.1",
+    "@daisp/transform": "^0.0.1"
   }
 }
